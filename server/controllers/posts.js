@@ -23,28 +23,14 @@ export const getPosts = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
-  const allowedOptions = ['title', 'content', 'tags', 'author'];
-
-  const reqOptions = Object.keys(req.body);
-
-  const allowed = reqOptions.every(option => allowedOptions.includes(option));
-
-  if (allowed) {
-    try {
-      const post = await Post.findById({ _id: req.params.id });
-      reqOptions.forEach(option => (post[option] = req.body[option]));
-      await post.save();
-      res.status(200).json(post);
-    } catch (error) {
-      res.status(404).json({ success: false, error });
-    }
-  } else {
-    res
-      .status(404)
-      .json({
-        success: false,
-        error: 'Body contains a key that is not allowed to be changed by user!',
-      });
+  try {
+    // This needs some validation and filtering
+    const post = await Post.findById({ _id: req.params.id });
+    Object.keys(req.body).forEach(option => (post[option] = req.body[option]));
+    await post.save();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(404).json({ success: false, error });
   }
 };
 

@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import Form from './components/form/Form';
+import Posts from './components/posts/Posts';
+import { getPosts } from './_actions/posts';
 
 function App() {
+  const [id, setId] = useState(0);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form setId={setId} getId={id} />
+      <Posts setId={setId} />
     </div>
   );
 }

@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Form from './components/form/Form';
-import Posts from './components/posts/Posts';
-import { getPosts } from './_actions/posts';
+import Lodges from './components/lodges/Lodges';
+import { getLodges } from './_actions/lodges';
 
 function App() {
-  const [id, setId] = useState(0);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getLodges());
   }, [dispatch]);
 
   return (
     <div className="App">
-      <Form setId={setId} getId={id} />
-      <Posts setId={setId} />
+      <Form />
+      <Lodges />
     </div>
   );
 }

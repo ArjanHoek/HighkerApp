@@ -1,30 +1,15 @@
 import { useForm } from 'react-hook-form';
-import { createPost, updatePost } from '../../_actions/posts';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { createLodge } from '../../_actions/lodges';
 
-export default function Form({ getId, setId }) {
-  const post = useSelector(state =>
-    state.posts.find(post => (post._id === getId ? post : null))
-  );
-  const { register, handleSubmit, reset, setValue } = useForm();
+export default function Form() {
+  const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
   const onSubmit = data => {
-    if (getId !== 0) {
-      dispatch(updatePost(getId, data));
-    } else {
-      dispatch(createPost(data));
-    }
+    dispatch(createLodge(data));
     reset();
   };
-
-  useEffect(() => {
-    if (getId !== 0) {
-      let keys = Object.keys(post);
-      keys.forEach(key => setValue(key, post[key]));
-    }
-  }, [getId, post, setValue]);
 
   return (
     <>
@@ -32,25 +17,17 @@ export default function Form({ getId, setId }) {
         <div>
           <input
             type="text"
-            name="author"
-            placeholder="Author"
-            {...register('author')}
+            name="name"
+            placeholder="Name"
+            {...register('name')}
           />
         </div>
         <div>
           <input
             type="text"
-            name="title"
-            placeholder="Title"
-            {...register('title')}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="content"
-            placeholder="Content"
-            {...register('content')}
+            name="country"
+            placeholder="Country"
+            {...register('country')}
           />
         </div>
         <button type="submit">Submit</button>

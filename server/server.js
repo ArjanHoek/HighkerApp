@@ -24,8 +24,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.sendFile('/client/build/index.html', { root: topDirectory });
+  res.sendFile('index.html', { root: topDirectory + '/client/build/' });
 });
+
+app.use(express.static('../client/build/'));
 
 app.use('/posts', postRouter);
 app.use('/lodges', lodgeRouter);

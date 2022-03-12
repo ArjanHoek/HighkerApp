@@ -38,7 +38,6 @@ export const updateLodge = async (req, res) => {
 export const deleteLodge = async (req, res) => {
   try {
     await Lodge.findOneAndDelete({ _id: req.params.id });
-    console.log('test');
     res.status(204).send();
   } catch (error) {
     res.status(404).json({ status: 'fail', error });

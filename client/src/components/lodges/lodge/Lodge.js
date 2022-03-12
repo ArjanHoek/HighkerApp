@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteLodge } from '../../../_actions/lodges';
+import styles from './Lodge.module.css';
 
 export default function Lodge({ id }) {
   const dispatch = useDispatch();
@@ -13,15 +14,9 @@ export default function Lodge({ id }) {
   };
 
   return (
-    <div style={style}>
+    <div className={styles.container}>
       <p>{name}</p>
       <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }
-
-const style = {
-  border: '1px solid black',
-  margin: '10px 0',
-  padding: '10px',
-};

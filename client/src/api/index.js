@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const lodgesUrl = 'http://localhost:8000/lodges';
+const lodgesUrl = 'http://localhost:5000/lodges';
 export const createLodge = lodge => axios.post(lodgesUrl, lodge);
 export const getLodges = () => axios.get(lodgesUrl);
 export const updateLodge = (id, lodge) =>

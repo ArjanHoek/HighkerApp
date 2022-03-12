@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: topDirectory });
+  res.sendFile('/client/build/index.html', { root: topDirectory });
 });
 
 app.use('/posts', postRouter);

@@ -9,8 +9,7 @@ import postRouter from './routes/posts.js';
 import lodgeRouter from './routes/lodges.js';
 
 import connect from './db/connect.js';
-import topDirectory from './topDirectory.js';
-import path from 'path';
+import __dirname from './__dirname.js';
 
 const { DBLINK, DBUSERNAME, DBPASSWORD, PORT } = process.env;
 connect(DBLINK, DBUSERNAME, DBPASSWORD);
@@ -23,11 +22,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-// app.get('/', (req, res) => {
-//   res.sendFile('index.html', { root: topDirectory + '/client/build/' });
-// });
+app.use(express.static('./client/build/'));
 
-// app.use(express.static('../client/build/'));
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: __dirname + '/client/build/' });
+});
 
 app.use('/posts', postRouter);
 app.use('/lodges', lodgeRouter);

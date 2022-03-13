@@ -23,11 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: topDirectory + '/client/build/' });
-});
+// app.get('/', (req, res) => {
+//   res.sendFile('index.html', { root: topDirectory + '/client/build/' });
+// });
 
-app.use(express.static('../client/build/'));
+// app.use(express.static('../client/build/'));
 
 app.use('/posts', postRouter);
 app.use('/lodges', lodgeRouter);

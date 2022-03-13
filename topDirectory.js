@@ -3,4 +3,4 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 
-export default path.dirname(__filename).replace('\\server', '');
+export default path.dirname(__filename);

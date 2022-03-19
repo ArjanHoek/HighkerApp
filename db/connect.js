@@ -4,7 +4,7 @@ export default function (link, username, password) {
   link = link.replace('{DBUSERNAME}', username);
   link = link.replace('{DBPASSWORD}', password);
 
-  mongoose.connect(link, {
-    useNewUrlParser: true,
-  });
+  const options = { useNewUrlParser: true };
+
+  mongoose.connect(link, options);
 }

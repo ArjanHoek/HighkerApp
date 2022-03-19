@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Highker'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B4C68E7C8E24250A352713ACEB784B7 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D36E70CE38C842A1A8E2D687B220259C }}
           package: .

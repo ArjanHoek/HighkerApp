@@ -1,6 +1,6 @@
-import Lodge from '../models/lodges.js';
+const Lodge = require('../models/lodges.js');
 
-export const createLodge = async (req, res) => {
+exports.createLodge = async (req, res) => {
   try {
     const lodge = new Lodge(req.body);
 
@@ -12,7 +12,7 @@ export const createLodge = async (req, res) => {
   }
 };
 
-export const getLodges = async (req, res) => {
+exports.getLodges = async (req, res) => {
   try {
     const lodges = await Lodge.find();
 
@@ -22,7 +22,7 @@ export const getLodges = async (req, res) => {
   }
 };
 
-export const updateLodge = async (req, res) => {
+exports.updateLodge = async (req, res) => {
   try {
     // This needs some validation and filtering
     const lodge = await Lodge.findById({ _id: req.params.id });
@@ -35,7 +35,7 @@ export const updateLodge = async (req, res) => {
   }
 };
 
-export const deleteLodge = async (req, res) => {
+exports.deleteLodge = async (req, res) => {
   try {
     await Lodge.findOneAndDelete({ _id: req.params.id });
     res.status(204).send();

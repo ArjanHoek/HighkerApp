@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const lodgeSchema = new mongoose.Schema(
   {
@@ -15,4 +15,4 @@ const lodgeSchema = new mongoose.Schema(
 
 const Lodge = mongoose.model('lodge', lodgeSchema);
 
-export default Lodge;
+module.exports = Lodge;

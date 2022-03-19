@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const { DBLINK, DBUSERNAME, DBPASSWORD } = process.env;
 
-export default function (link, username, password) {
-  link = link.replace('{DBUSERNAME}', username);
-  link = link.replace('{DBPASSWORD}', password);
+let link = DBLINK;
+link = link.replace('{DBUSERNAME}', DBUSERNAME);
+link = link.replace('{DBPASSWORD}', DBPASSWORD);
 
-  const options = { useNewUrlParser: true };
+const options = { useNewUrlParser: true };
 
-  mongoose.connect(link, options);
-}
+mongoose.connect(link, options);

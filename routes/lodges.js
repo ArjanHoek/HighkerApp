@@ -1,17 +1,17 @@
-import express from 'express';
+const express = require('express');
 
 const router = express.Router();
 
-import {
+const {
   getLodges,
   createLodge,
   updateLodge,
   deleteLodge,
-} from '../controllers/lodges.js';
+} = require('../controllers/lodges.js');
 
 router.get('/', getLodges);
 router.post('/', createLodge);
 router.patch('/:id', updateLodge);
 router.delete('/:id', deleteLodge);
 
-export default router;
+module.exports = router;

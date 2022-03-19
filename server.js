@@ -21,7 +21,7 @@ app.use(cors());
 app.use('/lodges', lodgeRouter);
 
 app.use(express.static('./client/build'));
-app.get('*', (req, res) => {
+app.get('*', (_, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
